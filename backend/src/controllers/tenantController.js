@@ -13,7 +13,6 @@ const createTenant = async (req, res) => {
       });
     }
 
-    // Validate type
     const validTypes = ['bank', 'telecom', 'airline'];
     if (!validTypes.includes(type)) {
       return res.status(400).json({
@@ -188,7 +187,6 @@ const deleteTenant = async (req, res) => {
       });
     }
 
-    // Soft delete - set status to inactive
     await tenant.update({ status: 'inactive' });
 
     res.status(200).json({
